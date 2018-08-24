@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>点播详情</title>
+    <link rel="stylesheet" type="text/css" href="skin/reset.css" />
+    <link rel="stylesheet" type="text/css" href="skin/base.css" />
+    <script>
+        // 750像素搞，100px=1rem
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+    </script>
+    <style>
+        /* 
+            基准字体大小:  font-size: 0.24rem;
+                   主色:  color: #15bbfd;
+                基准间距:  0.3rem;
+        */
+        #wraper{
+            padding: 0.3rem;
+        }
+        .video-wrap{
+            width: 100%;
+        }
+        .video-name-wrap{
+            height: 0.5rem;
+            line-height: 0.5rem;
+            font-size: 0.26rem;
+            color: #333;
+        }
+        .video-name{
+            font-size: 0.3rem;
+            color: #333;
+            font-weight: bold;
+        }
+        .tikets{
+            height: 0.3rem;
+            display: flex;
+            display: -ms-flex;
+            display: -moz-flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 0.16rem;
+        }
+        .tikets span{
+            flex: none;
+            color: #444;
+            font-size: 0.26rem;
+        }
+        .tikets img{
+            width: 0.32rem;
+            height: 0.32rem;
+        }
+        .tikets span:nth-of-type(1){
+            margin-right: 0.6rem;
+        }
+        .book-wrap{
+        }
+        .book-name{
+            color: #000;
+            font-size: 0.3rem;
+            margin-top: 0.2rem;
+            height: 0.7rem;
+            line-height: 0.7rem;
+            border-top: 1px solid #ddd;
+        }
+        .book-info{
+            line-height: 1.8;
+            color: #666;
+            font-size: 0.26rem;
+            max-height: 2rem;
+            overflow-y: auto;
+        }
+        .call-btn{
+            margin-top: 0.3rem;
+            height: 0.8rem;
+            width: 100%;
+            background: url(./img/call.png) no-repeat center center;
+            background-size: contain;
+            border-radius: 4px;
+        }
+        .tuijian-title{
+            height: 0.8rem;
+            line-height: 0.8;
+            color: #000;
+            font-size: 0.3rem;
+        }
+        .slider{
+            height: 2.4rem;
+            width: 100%;
+            overflow-x: scroll; 
+            overflow-y: hidden;
+            display: flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+        .slider-item{
+            position: relative;
+            flex: none;
+            -ms-flex: none;
+            -moz-flex: none;
+            margin-right: 0.16rem;
+        }
+        .slider-item-img{
+            display: block;
+            height: 1.8rem;
+        }
+        .slider-item-name{
+            height: 0.5rem;
+            line-height: 0.5rem;
+            font-size: 0.24rem;
+            color: #666;
+            text-align: center;
+        }
+        .slider-play{
+            width: 100%;
+            height: 1.8rem;
+            z-index: 1003;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            background: rgba(0, 0, 0, .4);
+        }
+        .slider-play-icon{
+            position: absolute;
+            z-index: 1004;
+            width: 0.8rem;
+            height: 0.8rem;
+            left: 50%;
+            top: 0.9rem;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        /* 打CALL浮层-开始 */
+        .mask {
+            background: rgba(0, 0, 0, .7);
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 1006;
+            left: 0px;
+            top: 0px;
+        }
+        .ticket-icon {
+            width: 0.36rem;
+            height: 0.36rem;
+            display: inline-block;
+            margin-right: 4px;
+        }
+        .ticket-number {
+            display: flex;
+            display: -ms-flex;
+            height: 0.9rem;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 0.24rem;
+            color: #333;
+            border-bottom: 1px solid #dfdfdf;
+        }
+        .call-mask {
+            background: #fff;
+            width: 100%;
+            padding: 0.36rem;
+            position: fixed;
+            z-index: 1007;
+            left: 0px;
+            bottom: 0px;
+            transition: bottom .4s;
+        }
+
+        .call-wrap {
+            position: relative;
+            text-align: center;
+            font-size: 0.28rem;
+            color: #333;
+            font-weight: bold;
+            height: 0.6rem;
+            line-height: 0.6rem;
+        }
+
+        .call-close {
+            position: absolute;
+            z-index: 1008;
+            right: 4px;
+            top: 0px;
+            width: 0.6rem;
+            height: 0.6rem;
+            background: url(./img/down.png) no-repeat center center;
+            background-size: 70% 70%;
+        }
+
+        .call-ticket-number {
+            justify-content: center;
+            border-bottom: none;
+        }
+
+        .call-btn-wrap {
+            position: relative;
+            display: flex;
+            display: -ms-flex;
+            display: -moz-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 0.6rem;
+        }
+
+        .call-btn-1,
+        .call-btn-2 {
+            flex: none;
+            -ms-flex: none;
+            -moz-flex: none;
+            width: 49%;
+            height: 0.6rem;
+            border-radius: 4px;
+        }
+
+        .call-btn-1 {
+            background: url(./img/call-50.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .call-btn-1.disabled {
+            background: url(./img/call-50-disabled.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .call-btn-2 {
+            background: url(./img/call-all.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .call-btn-2.disabled {
+            background: url(./img/call-all-disabled.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .call-text {
+            font-size: 0.24rem;
+            color: #333;
+            text-align: center;
+            line-height: 1.4;
+            margin-top: 0.24rem;
+            margin-bottom: 0.24rem;
+        }
+
+        .call-btn-3 {
+            width: 80%;
+            margin: 0 auto;
+            height: 0.6rem;
+            border-radius: 4px;
+            background: url(./img/huiyuan.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        /* 打CALL浮层-结束 */
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wraper" class="wraper">
+        <div class="video-wrap">
+            <video 
+                src="./img/mp4.mp4" 
+                width="100%" 
+                poster="./img/haibao.jpg" 
+                controls
+                style="object-fit: fill">
+            </video>
+        </div>
+        <div class="video-name-wrap">
+            <span class="video-name">《视频作品名称》</span>-- 可爱的人
+        </div>
+        <div class="tikets">
+            <span>排名：第14名</span>
+            <span>获得票数：<img src="./img/icon.png" alt="icon"> 6389</span>
+        </div>
+        <div class="book-wrap">
+            <div class="book-name">作品描述：</div>
+            <div class="book-info">描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</div>
+        </div>
+        <!-- 按钮 -->
+        <div @click="callFn" class="call-btn"></div>
+
+        <!-- 轮播 -->
+        <span class="tuijian-title">该用户作品推荐</span>
+        <div class="slider">
+            <div
+                @click="sliderClick(n)" 
+                class="slider-item" 
+                v-for="n in 4">
+                <img class="slider-item-img" src="./img/item.jpg" alt="item">
+                <div class="slider-item-name">《食品名称》</div>
+                <div class="slider-play">
+                    <img class="slider-play-icon" src="./img/play.png" alt="play">
+                </div>
+            </div>
+        </div>
+
+        <!-- 黑色半透明遮罩 -->
+        <div 
+            v-show="show_call_mask" 
+            @click.stop="show_call_mask = false;" 
+            class="mask">
+        </div>
+
+        <!-- 打CALL浮层 -->
+        <div 
+            :style="{
+                bottom: show_call_mask? '0px': '-100%',
+            }" 
+            class="call-mask">
+            <div class="call-wrap">
+                为《名称123》打CALL
+                <span class="call-close" @click="show_call_mask = false">
+                </span>
+            </div>
+            <div class="ticket-number call-ticket-number">
+                当前可用次数：
+                <img class="ticket-icon" src="./img/icon.png" alt="icon"> 100
+            </div>
+            <div class="call-btn-wrap">
+                <div class="call-btn-1 disabled"></div>
+                <div class="call-btn-2 disabled"></div>
+            </div>
+            <div class="call-text">
+                注册用户可每日打CALL 50次，会员每日尊享打CALL 500次
+            </div>
+            <div class="call-btn-3"></div>
+        </div>
+
+    </div>
+    <script src="src/jquery.min.js"></script>
+    <script src="src/vue.min.js"></script>
+    <script>
+        $(function () {
+            new Vue({
+                el: '#wraper',
+                data: {
+                    //显示打CALL浮层
+                    show_call_mask: false,
+                },
+                methods: {
+                    sliderClick: function(n){
+                        console.log(n)
+                    },
+                    callFn: function(){
+                        this.show_call_mask = true;
+                    },
+                },
+            });
+        });
+    </script>
+</body>
+</html>

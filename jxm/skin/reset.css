@@ -1,0 +1,146 @@
+
+/**
+ * reset style
+ */
+/*内外边距通常让各个浏览器样式的表现位置不同*/
+body,
+div,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+footer,
+header,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+}
+/*
+  去除默认边框
+  图片与外围容器贴合
+  img缩放处理
+*/
+img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+}
+/*去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去*/
+ul,
+li {
+  list-style: none;
+}
+button,
+input,
+select,
+textarea {
+  /*表单元素不继承父级 font 的问题*/
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: middle;
+}
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  /*去chrome focus默认的高亮边框*/
+  outline: none;
+}
+/**
+ * html5  reset style
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+/*如同img标签*/
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  /*没有controls属性统一不显示，*/
+  display: none;
+  /*防止IOS5下多余的高度*/
+  height: 0;
+}
+/*
+ 重置a元素：
+    1. 去掉IE10中已激活链接的灰色背景
+    2. 处理chrome与其它浏览器在a:focus时的不同
+    3. 提升a:active,a:hover时元素的可读性
+    4. 去掉下划线
+ */
+a {
+  background: transparent;
+  /*1*/
+}
+a:focus {
+  outline: thin dotted;
+  /*2*/
+}
+a:active,
+a:hover {
+  outline: 0;
+  /*3*/
+}
+a:link,
+a:visited,
+ins {
+  text-decoration: none;
+  /* 4*/
+}
+/*
+    统一盒模型
+*/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: none;
+  /*屏蔽浏览器默认字体大小*/
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  /*去除a标签点击阴影*/
+}
+html,
+body {
+  min-height: 100%;
+}

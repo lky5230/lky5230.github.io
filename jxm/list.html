@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>点播列表</title>
+    <link rel="stylesheet" type="text/css" href="skin/reset.css" />
+    <link rel="stylesheet" type="text/css" href="skin/base.css" />
+    <script>
+        // 750像素搞，100px=1rem
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+    </script>
+    <style>
+        /* 
+            基准字体大小:  font-size: 0.24rem;
+                   主色:  color: #15bbfd;
+                基准间距:  0.3rem;
+        */
+        .wraper {}
+
+        .banner {
+            position: relative;
+        }
+
+        .guizhe-text {
+            position: absolute;
+            z-index: 100;
+            right: 0.2rem;
+            bottom: 0.2rem;
+            font-size: 0.3rem;
+            text-decoration: underline;
+            color: #666;
+        }
+
+        .main {
+            padding-left: 0.3rem;
+            padding-right: 0.3rem;
+        }
+
+        .ticket-number {
+            display: flex;
+            display: -ms-flex;
+            height: 0.9rem;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 0.24rem;
+            color: #333;
+            border-bottom: 1px solid #dfdfdf;
+        }
+
+        .ticket-number-2 {
+            display: flex;
+            display: -ms-flex;
+            height: 0.9rem;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 0.24rem;
+            margin-bottom: 0.26rem;
+        }
+
+        .ticket-number-2-left {
+            color: #333;
+            width: 50%;
+            flex: none;
+            -ms-flex: none;
+            -moz-flex: none;
+            padding-left: 0.1rem;
+            padding-right: 0.1rem;
+        }
+
+        .ticket-number-2-btn {
+            width: 50%;
+            background: url(./img/more.png) no-repeat left center;
+            background-size: auto 100%;
+            background-position-x: 0.1rem;
+            flex: none;
+            -ms-flex: none;
+            -moz-flex: none;
+            height: 0.68rem;
+            line-height: 0.68rem;
+            border-radius: 6px;
+        }
+
+        .ticket-icon {
+            width: 0.36rem;
+            height: 0.36rem;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .tab-bar {
+            display: flex;
+            display: -ms-flex;
+            align-items: center;
+            height: 0.7rem;
+            align-items: center;
+            margin-top: 0.3rem;
+        }
+
+        .tab-left {
+            flex: none;
+            width: 50%;
+            padding-right: 0.1rem;
+            display: flex;
+            display: -ms-flex;
+            align-items: center;
+            font-size: 0.26rem;
+            height: 0.68rem;
+            line-height: 0.68rem;
+        }
+
+        .tab-left span {
+            color: #666;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-left span.active {
+            color: #15bbfd;
+            border-bottom: 2px solid #15bbfd;
+            font-weight: bold;
+        }
+
+        .tab-left span:nth-of-type(1) {
+            margin-right: 0.4rem;
+        }
+
+        .tab-right {
+            flex: none;
+            width: 50%;
+            padding-left: 0.1rem;
+            position: relative;
+        }
+
+        .tab-right-inp {
+            display: block;
+            width: 100%;
+            height: 0.7rem;
+            border: 1px solid #aaa;
+            outline: none;
+            font-size: 0.24rem;
+            border-radius: 0.16rem;
+            padding-left: 0.16rem;
+            padding-right: 0.8rem;
+        }
+
+        .tab-right-inp:focus {
+            border-color: #15bbfd;
+        }
+
+        .tab-right-search {
+            position: absolute;
+            height: 0.7rem;
+            width: 0.8rem;
+            top: 0px;
+            right: 0px;
+            background: url(./img/seach.png) no-repeat center center;
+            background-size: 50% 50%;
+            z-index: 102;
+        }
+
+        .item {
+            width: 50%;
+            margin-top: 0.3rem;
+        }
+
+        .item:nth-of-type(2n) {
+            padding-left: 0.1rem;
+        }
+
+        .item:nth-of-type(2n-1) {
+            padding-right: 0.1rem;
+        }
+
+        .item-img-wrap {
+            position: relative;
+        }
+
+        .item-img {
+            display: block;
+            width: 100%;
+        }
+
+        .item-img-play {
+            position: absolute;
+            z-index: 103;
+            width: 1rem;
+            height: 1rem;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .play-code {
+            position: absolute;
+            z-index: 106;
+            top: 0px;
+            right: 0px;
+            font-size: 0.2rem;
+            padding: 2px 4px;
+            color: #fff;
+            background: #666;
+        }
+
+        .play-top-icon {
+            position: absolute;
+            z-index: 107;
+            left: 0px;
+            top: 0px;
+            max-width: 28%;
+        }
+
+        .play-name {
+            position: absolute;
+            z-index: 106;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            font-size: 0.2rem;
+            color: #fff;
+            padding: 2px 4px;
+            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.07) 1%, rgba(0, 0, 0, 0.78) 100%);
+            background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.07) 1%, rgba(0, 0, 0, 0.78) 100%);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.07) 1%, rgba(0, 0, 0, 0.78) 100%);
+        }
+
+        .video-name {
+            text-align: center;
+            height: 0.6rem;
+            line-height: 0.6rem;
+            font-size: 0.3rem;
+            color: #333;
+        }
+
+        .video-tikets-num {
+            text-align: center;
+            height: 0.3rem;
+            line-height: 0.3rem;
+            font-size: 0.24rem;
+            color: #aaa;
+            margin-bottom: 0.18rem;
+        }
+
+        .video-btn {
+            background: url(./img/call.png) no-repeat left center #15bbfd;
+            background-size: 100% 100%;
+            color: #fff;
+            font-size: 0.26rem;
+            text-align: center;
+            height: 0.6rem;
+            line-height: 0.6rem;
+            border-radius: 6px;
+            margin-bottom: 0.4rem;
+        }
+
+        .pages {
+            display: flex;
+            display: -ms-flex;
+            display: -moz-flex;
+            justify-content: center;
+            align-items: center;
+            height: 0.6rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .page-left,
+        .page-right {
+            font-size: 0.3rem;
+            color: #333;
+            padding-left: 0.4rem;
+            padding-right: 0.4rem;
+        }
+
+        .page-left {
+            background: url(./img/left.png) no-repeat left center;
+            background-size: 0.3rem 0.3rem;
+        }
+
+        .page-number {
+            font-size: 0.26rem;
+            color: #666;
+            padding-left: 0.2rem;
+            padding-right: 0.2rem;
+        }
+
+        .page-right {
+            background: url(./img/right.png) no-repeat right center;
+            background-size: 0.3rem 0.3rem;
+        }
+
+        .to-top {
+            background: url(./img/to-top.png) no-repeat center center;
+            background-size: contain;
+            width: 0.64rem;
+            height: 0.64rem;
+            border-radius: 4px;
+            position: fixed;
+            bottom: 1.3rem;
+            right: 0.2rem;
+            z-index: 1000;
+        }
+
+        /* 打CALL浮层-开始 */
+        .mask {
+            background: rgba(0, 0, 0, .7);
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 1001;
+            left: 0px;
+            top: 0px;
+        }
+
+        .call-mask {
+            background: #fff;
+            width: 100%;
+            padding: 0.36rem;
+            position: fixed;
+            z-index: 1002;
+            left: 0px;
+            bottom: 0px;
+            transition: bottom .4s;
+        }
+
+        .call-wrap {
+            position: relative;
+            text-align: center;
+            font-size: 0.28rem;
+            color: #333;
+            font-weight: bold;
+            height: 0.6rem;
+            line-height: 0.6rem;
+        }
+
+        .call-close {
+            position: absolute;
+            z-index: 1003;
+            right: 4px;
+            top: 0px;
+            width: 0.6rem;
+            height: 0.6rem;
+            background: url(./img/down.png) no-repeat center center;
+            background-size: 70% 70%;
+        }
+
+        .call-ticket-number {
+            justify-content: center;
+            border-bottom: none;
+        }
+
+        .call-btn-wrap {
+            position: relative;
+            display: flex;
+            display: -ms-flex;
+            display: -moz-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 0.6rem;
+        }
+
+        .call-btn-1,
+        .call-btn-2 {
+            flex: none;
+            -ms-flex: none;
+            -moz-flex: none;
+            width: 49%;
+            height: 0.6rem;
+            border-radius: 4px;
+        }
+
+        .call-btn-1 {
+            background: url(./img/call-50.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .call-btn-1.disabled {
+            background: url(./img/call-50-disabled.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .call-btn-2 {
+            background: url(./img/call-all.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .call-btn-2.disabled {
+            background: url(./img/call-all-disabled.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .call-text {
+            font-size: 0.24rem;
+            color: #333;
+            text-align: center;
+            line-height: 1.4;
+            margin-top: 0.24rem;
+            margin-bottom: 0.24rem;
+        }
+
+        .call-btn-3 {
+            width: 80%;
+            margin: 0 auto;
+            height: 0.6rem;
+            border-radius: 4px;
+            background: url(./img/huiyuan.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        /* 打CALL浮层-结束 */
+
+        .guizhe {
+            font-size: 0.28rem;
+            color: #666;
+            line-height: 1.4;
+            margin-top: 0.3rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wraper" class="wraper">
+
+        <div class="banner">
+            <img class="center-block" src="./img/banner.jpg" alt="banner">
+            <span class="guizhe-text" @click="show_guizhe_mask = true">活动规则</span>
+        </div>
+
+        <div class="main">
+
+            <div class="ticket-number">
+                当前可用次数：
+                <img class="ticket-icon" src="./img/icon.png" alt="icon"> 100
+            </div>
+
+            <div class="tab-bar">
+                <div class="tab-left">
+                    <span :class="{active: !isByTime}" @click="isByTime=false">按人气</span>
+                    <span :class="{active: isByTime}" @click="isByTime=true">按时间</span>
+                </div>
+                <div class="tab-right">
+                    <input class="tab-right-inp" type="text" placeholder="用户昵称/视频名称" />
+                    <div class="tab-right-search">&nbsp;</div>
+                </div>
+            </div>
+
+            <!-- 列表 -->
+            <div class="clearfix">
+                <div class="item fl" v-for="n in 4" :key="n">
+                    <div class="item-img-wrap">
+                        <!-- 预览图 -->
+                        <img src="./img/item.jpg" class="item-img" alt="show">
+                        <!-- 播放按钮 -->
+                        <img src="./img/play.png" class="item-img-play" alt="play">
+
+                        <!-- 视频编号 -->
+                        <span class="play-code">B001</span>
+                        <!-- 姓名 -->
+                        <span class="play-name">范玮琪</span>
+                        <!-- TOP图标 -->
+                        <img v-if="n==1" class="play-top-icon" src="./img/top1.png" />
+                    </div>
+                    <div class="video-name nowrap">《视频作品名称》</div>
+                    <div class="video-tikets-num nowrap">活动票数：127535</div>
+                    <!-- 按钮 -->
+                    <div class="video-btn"></div>
+                </div>
+            </div>
+
+            <!-- 分页 -->
+            <div class="pages">
+                <div class="page-left">
+                    上一页
+                </div>
+                <div class="page-number">
+                    第1页 / 共4页
+                </div>
+                <div class="page-right">
+                    下一页
+                </div>
+            </div>
+
+            <div class="ticket-number-2">
+                <span class="ticket-number-2-left nowrap">
+                    当前可用次数：
+                    <img class="ticket-icon" src="./img/icon.png" alt="icon"> 28079
+                </span>
+                <span class="ticket-number-2-btn"></span>
+            </div>
+
+            <!-- 返回顶部 -->
+            <div class="to-top"></div>
+
+            <!-- 黑色半透明遮罩 -->
+            <div 
+                v-show="show_call_mask || show_guizhe_mask" 
+                @click.stop="show_call_mask = false; show_guizhe_mask = false" 
+                class="mask">
+            </div>
+
+            <!-- 打CALL浮层 -->
+            <div :style="{
+                    bottom: show_call_mask? '0px': '-100%',
+                }" class="call-mask">
+                <div class="call-wrap">
+                    为《名称123》打CALL
+                    <span class="call-close" @click="show_call_mask = false">
+                    </span>
+                </div>
+                <div class="ticket-number call-ticket-number">
+                    当前可用次数：
+                    <img class="ticket-icon" src="./img/icon.png" alt="icon"> 100
+                </div>
+                <div class="call-btn-wrap">
+                    <div class="call-btn-1 disabled"></div>
+                    <div class="call-btn-2 disabled"></div>
+                </div>
+                <div class="call-text">
+                    注册用户可每日打CALL 50次，会员每日尊享打CALL 500次
+                </div>
+                <div class="call-btn-3"></div>
+            </div>
+
+            <!-- 活动规则 -->
+            <div :style="{
+                    bottom: show_guizhe_mask? '0px': '-100%',
+                }" class="call-mask">
+                <div class="call-wrap">
+                    活动规则
+                    <span class="call-close" @click="show_guizhe_mask = false">
+                    </span>
+                </div>
+                <p class="guizhe">
+                    活动规则描述，讽德诵功 活动规则描述，讽德诵功 活动规则描述，讽德诵功 活动规则描述，讽德诵功 活动规则描述，讽德诵功 活动规则描述，讽德诵功 活动规则描述，讽德诵功 活动规则描述，讽德诵功 活动规则描述，讽德诵功 活动规则描述，讽德诵功 活动规则描述，讽德诵功
+                    活动规则描述，讽德诵功
+                </p>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="src/jquery.min.js"></script>
+    <script src="src/vue.min.js"></script>
+    <script>
+        $(function () {
+            new Vue({
+                el: '#wraper',
+                data: {
+                    //tab按人气还是时间
+                    isByTime: false,
+                    //显示打CALL浮层
+                    show_call_mask: false,
+                    //显示活动规则浮层
+                    show_guizhe_mask: false,
+                },
+                mounted: function () {
+                    var vm = this;
+                    //回到顶部相关
+                    vm.registerGoTop()
+
+                    $('body').delegate('.video-btn', 'click', function () {
+                        vm.show_call_mask = true;
+                    });
+                },
+                methods: {
+                    //回到顶部相关
+                    registerGoTop: function () {
+                        $(window).scroll(function () {
+                            if ($(this).scrollTop() > 120) {
+                                $('.to-top').fadeIn();
+                            } else {
+                                $('.to-top').fadeOut();
+                            }
+                        });
+                        $('.to-top').click(function () {
+                            $('html ,body').animate({ scrollTop: 0 }, 300);
+                            return false;
+                        });
+                    },
+
+
+
+                },
+            });
+        });
+    </script>
+</body>
+
+</html>
