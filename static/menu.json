@@ -1,79 +1,48 @@
-{
-    "data": {
-        "result": [
-            {
-                "id": 1,
-                "name": "流程图 - demo",
-                "url": "/flow",
-                "parentid": 0,
-                "icon": "fa fa-code-fork"
-            },
-            {
-                "id": 2,
-                "name": "表格 - demo",
-                "url": "/database",
-                "parentid": 0,
-                "icon": "fa fa-database"
-            },
-
-            {
-                "id": 3,
-                "name": "1级-001",
-                "url": "/",
-                "parentid": 0,
-                "icon": ""
-            },
-            {
-                "id": 4,
-                "name": "1级-002",
-                "url": "/",
-                "parentid": 0,
-                "icon": ""
-            },
-            {
-                "id": 5,
-                "name": "2级-001",
-                "url": "/",
-                "parentid": 3,
-                "icon": ""
-            },
-            {
-                "id": 6,
-                "name": "2级-002",
-                "url": "/",
-                "parentid": 3,
-                "icon": ""
-            },
-            {
-                "id": 7,
-                "name": "2级-003",
-                "url": "/",
-                "parentid": 4,
-                "icon": ""
-            },
-            {
-                "id": 8,
-                "name": "3级-001",
-                "url": "/",
-                "parentid": 7,
-                "icon": ""
-            },
-            
-            {
-                "id": 9,
-                "name": "3级-002",
-                "url": "/",
-                "parentid": 7,
-                "icon": ""
-            },
-            {
-                "id": 10,
-                "name": "3级-003",
-                "url": "/",
-                "parentid": 7,
-                "icon": ""
-            }
-
-        ]
+[
+    {
+        "id": 1,
+        "title": "主页1",
+        "parentid": 0,
+        "url": "/"
+    },{
+        "id": 2,
+        "title": "主页2",
+        "parentid": 0,
+        "url": "/index2"
+    },{
+        "id": 3,
+        "title": "主页3",
+        "parentid": 0,
+        "url": "/"
+    },{
+        "id": 4,
+        "title": "副业1",
+        "parentid": 1,
+        "url": "/"
+    },{
+        "id": 5,
+        "title": "副业2",
+        "parentid": 1,
+        "url": "/3"
+    },{
+        "id": 6,
+        "title": "三级页1",
+        "parentid": 4,
+        "url": "/1"
+    },{
+        "id": 7,
+        "title": "三级页2",
+        "parentid": 4,
+        "url": "/2"
+    },{
+        "id": 8,
+        "title": "2级页",
+        "parentid": 3,
+        "url": "/"
+    },{
+        "id": 9,
+        "title": "3级页",
+        "parentid": 8,
+        "url": "/5"
     }
-}
+]
