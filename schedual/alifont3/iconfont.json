@@ -1,0 +1,58 @@
+{
+  "id": "1619604",
+  "name": "宏盛图标修正",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2908988",
+      "name": "证书管理",
+      "font_class": "zhengshuguanli",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "2960096",
+      "name": "资金管理",
+      "font_class": "zijinguanli",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "7315673",
+      "name": "材料",
+      "font_class": "cailiao1",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "8662522",
+      "name": "承包商人员信息",
+      "font_class": "chengbaoshangrenyuanxinxi",
+      "unicode": "e87d",
+      "unicode_decimal": 59517
+    },
+    {
+      "icon_id": "12889758",
+      "name": "lc",
+      "font_class": "lc",
+      "unicode": "e694",
+      "unicode_decimal": 59028
+    },
+    {
+      "icon_id": "12889959",
+      "name": "bzj",
+      "font_class": "bzj",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
+      "icon_id": "12890210",
+      "name": "wjz",
+      "font_class": "wjz",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    }
+  ]
+}

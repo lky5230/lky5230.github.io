@@ -1,0 +1,163 @@
+{
+  "id": "1284511",
+  "name": "宏盛项目-目录图标管理",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1996656",
+      "name": "工作流程",
+      "font_class": "ZHicon-",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "2002797",
+      "name": "设备管理",
+      "font_class": "shebeiguanli",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "3222359",
+      "name": "外经证管理",
+      "font_class": "waijingzhengguanli",
+      "unicode": "e769",
+      "unicode_decimal": 59241
+    },
+    {
+      "icon_id": "3370622",
+      "name": "保函申请",
+      "font_class": "baohanshenqing",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "4381105",
+      "name": "发票",
+      "font_class": "invoice1",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "4520552",
+      "name": "流程",
+      "font_class": "liucheng-",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "4630631",
+      "name": "总承包类合同",
+      "font_class": "zongchengbaoleihetong",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "4695755",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "4850483",
+      "name": "房贷",
+      "font_class": "fangdai",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "5238960",
+      "name": "模板",
+      "font_class": "moban-copy",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "6838262",
+      "name": "系统管理",
+      "font_class": "dianpu",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "8782825",
+      "name": "icon-分供商管理highlight",
+      "font_class": "icon-fengongshangguanlihighlight",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "9383727",
+      "name": "工程管理",
+      "font_class": "gongchengguanli",
+      "unicode": "e716",
+      "unicode_decimal": 59158
+    },
+    {
+      "icon_id": "9557029",
+      "name": "分包管理",
+      "font_class": "fenbaoguanli",
+      "unicode": "e6ce",
+      "unicode_decimal": 59086
+    },
+    {
+      "icon_id": "9747220",
+      "name": "基础管理",
+      "font_class": "jichuguanli",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "9755085",
+      "name": "添加",
+      "font_class": "tianjia2",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "9755308",
+      "name": "垂直树编辑",
+      "font_class": "bianji1",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "9755508",
+      "name": "恢复",
+      "font_class": "huifu1",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "9755598",
+      "name": "树-删除",
+      "font_class": "shu-shanchu",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "9755619",
+      "name": "树-伸缩",
+      "font_class": "shu-shensuo",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "10050427",
+      "name": "bao-1",
+      "font_class": "bao-",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "11404496",
+      "name": "招标管理",
+      "font_class": "zhaobiaoguanli",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    }
+  ]
+}
