@@ -1,0 +1,38 @@
+/* 修复luckysheet编辑时，层级过低看不见的bug */
+.luckysheet-input-box{
+    z-index: 99999;
+}
+.luckysheet-row-count-show{
+    width: auto !important;
+}
+.luckysheet-share-logo{
+    width: auto;
+    background: url(../test.png) left center no-repeat;
+    background-size: auto 100%;
+}
+/* 无返回 .no-back */
+.no-back .luckysheet_info_detail div.luckysheet_info_detail_back{
+    display: none;
+}
+.luckysheet_info_detail_update,
+.luckysheet_info_detail_save{
+    display: none;
+}
+.luckysheet,
+.luckysheet_info_detail{
+    border-radius: 4px;
+    border: none;
+}
+.luckysheet_info_detail{
+    border-radius: 4px 4px 0px 0px;
+    box-shadow: none;
+    background: linear-gradient(0deg, #fff 0%, #ffffff 20%, #fdf7f5 60%, #edf2ff 100%);
+}
+.luckysheet_info_detail .luckysheet_info_detail_input{
+    pointer-events: none;
+    background-color: transparent;
+    color: #333;
+    font-weight: bold;
+}
+
+

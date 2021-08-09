@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>sb</title>
+		<meta name="description" content="A Three.js powered animation that resembles the nightly view of fast cars on a road." />
+		<meta name="keywords" content="webgl, three.js, cars, road, highway, lights, speed, web development, demo, javascript" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<!-- <link rel="stylesheet" href="https://use.typekit.net/uok8swb.css"> -->
+		<!-- <link rel="stylesheet" type="text/css" href="css/base.css" /> -->
+		
+	</head>
+	<body style="overflow: hidden;">
+
+		<div id="app" style="width: 1280px; height: 400px; background-color: transparent;"></div>
+
+		<script src="js/three.min.js"></script>
+		<script src="js/postprocessing.min.js"></script>
+		<script src="js/InfiniteLights.js"></script>
+		<script src="js/Distortions.js"></script>
+		<script>
+		(function() {
+
+			const container = document.getElementById('app');
+
+			const options = {
+				onSpeedUp: (ev) => {					
+				},
+				onSlowDown: (ev) => {
+				},
+				// mountainDistortion || LongRaceDistortion || xyDistortion || turbulentDistortion || turbulentDistortionStill || deepDistortionStill || deepDistortion
+				distortion: turbulentDistortion, 
+				
+				length: 600,
+				roadWidth: 10,
+				islandWidth: 5,
+				lanesPerRoad: 3,
+
+				fov: 90,
+				fovSpeedUp: 150,
+				speedUp: 10,
+				carLightsFade: 0.6,
+
+				totalSideLightSticks: 20,
+				lightPairsPerRoadWay: 40,
+
+				// Percentage of the lane's width
+				shoulderLinesWidthPercentage: 0.05,
+				brokenLinesWidthPercentage: 0.1,
+				brokenLinesLengthPercentage: 0.5,
+
+				/*** These ones have to be arrays of [min,max].  ***/
+				lightStickWidth: [0.12, 0.5],
+				lightStickHeight: [1.3, 1.7],
+
+				movingAwaySpeed: [60, 80],
+				movingCloserSpeed: [-120, -160],
+
+				/****  Anything below can be either a number or an array of [min,max] ****/
+
+				// Length of the lights. Best to be less than total length
+				carLightsLength: [400 * 0.03, 400 * 0.2],
+				// Radius of the tubes
+				carLightsRadius: [0.05, 0.14],
+				// Width is percentage of a lane. Numbers from 0 to 1
+				carWidthPercentage: [0.3, 0.5],
+				// How drunk the driver is.
+				// carWidthPercentage's max + carShiftX's max -> Cannot go over 1. 
+				// Or cars start going into other lanes 
+				carShiftX: [-0.8, 0.8],
+				// Self Explanatory
+				carFloorSeparation: [0, 5],
+
+				colors: {
+					// roadColor: 0xff0000,
+					// islandColor: 0x0000aa,
+					// background: 0xff0000,
+					shoulderLines: 0x131318,
+					brokenLines: 0x131318,
+					
+					leftCars: [0xD856BF, 0x6750A2, 0xC247AC],
+					rightCars: [0x03B3C3, 0x0E5EA5, 0x324555],
+					sticks: 0x03B3C3,
+				}
+			};
+
+			const myApp = new App(container, options);
+			myApp.loadAssets().then(myApp.init);
+
+		})();
+		</script>
+	</body>
+</html>

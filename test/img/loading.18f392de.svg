@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 50 50" version="1.1">
+
+<!-- 
+  path画圆
+  <path d="
+    M cx cy
+    m -r, 0
+    a r,r 0 1,0 (r * 2),0
+    a r,r 0 1,0 -(r * 2),0
+  "/> 
+-->
+
+  <ellipse fill="#0438de" stroke="none" stroke-width="0" cx="10" cy="5" rx="2" ry="3">
+    <animate
+      attributeName="cy"
+      begin="0s"
+      values="5;30;5"
+      dur=".6s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="ry"
+      begin="0s"
+      values="3;12;3"
+      dur=".5s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="opacity"
+      begin="0s"
+      values="1;.1;1"
+      dur=".8s"
+      repeatCount="indefinite" />
+  </ellipse>
+
+  <ellipse fill="#9d00ff" stroke="none" stroke-width="0" cx="22" cy="5" rx="2" ry="3">
+    <animate
+      attributeName="cy"
+      begin="0.1s"
+      values="5;30;5"
+      dur=".6s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="ry"
+      begin="0s"
+      values="3;12;3"
+      dur=".5s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="opacity"
+      begin="0.1s"
+      values="1;.1;1"
+      dur=".8s"
+      repeatCount="indefinite" />
+  </ellipse>
+
+  <ellipse fill="#09c398" stroke="none" stroke-width="0" cx="35" cy="5" rx="2" ry="3">
+    <animate
+      attributeName="cy"
+      begin="0.2s"
+      values="5;30;5"
+      dur=".6s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="ry"
+      begin="0s"
+      values="3;12;3"
+      dur=".5s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="opacity"
+      begin="0.2s"
+      values="1;.1;1"
+      dur=".8s"
+      repeatCount="indefinite" />
+  </ellipse>
+
+  <ellipse fill="#F4CA1C" stroke="none" stroke-width="0" cx="48" cy="5" rx="2" ry="3">
+    <animate
+      attributeName="cy"
+      begin="0.3s"
+      values="5;30;5"
+      dur=".6s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="ry"
+      begin="0s"
+      values="3;12;3"
+      dur=".5s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="opacity"
+      begin="0.3s"
+      values="1;0.1;1"
+      dur=".8s"
+      repeatCount="indefinite" />
+  </ellipse>
+
+</svg>

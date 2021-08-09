@@ -1,0 +1,344 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="init" type="InitTab" active="false" scrollx="682.9999999999992" scrolly="323" scale="0.9">
+    <block xmlns="https://developers.google.com/blockly/xml" type="initSettings" id="o+euYzDp|vv][|%4`G^Y" x="-610" y="-170">
+      <field name="LOAD_COMP_ASSETS">TRUE</field>
+      <field name="FULLSCREEN">FALSE</field>
+      <field name="BKG_TRANSPARENCY">FALSE</field>
+      <field name="PRESERVE_DRAW_BUF">FALSE</field>
+      <field name="FADE_ANNOTATIONS">FALSE</field>
+    </block>
+  </tab>
+  <tab name="main" type="MainTab" active="true" scrollx="743.0855568122997" scrolly="432.0336216854321" scale="0.6139132535407592">
+    <variables xmlns="https://developers.google.com/blockly/xml">
+      <variable id="5;{4+P:`l7:d`z|,5I)x" type="">e_地球_click</variable>
+      <variable id="|r_5M95!eka:F,FPe`AT" type="">地球_point</variable>
+      <variable id="2q}$4./;7Wx*aPCge|Da" type="">地球_point_vector</variable>
+    </variables>
+    <block xmlns="https://developers.google.com/blockly/xml" type="execScript" id="(6z1=sCb6U17fn5AWFl9" x="-1050" y="-670">
+      <value name="TEXT">
+        <shadow type="textMultiline" id="5^i/e:ghE:t6~!^@6y:W">
+          <field name="HIGHLIGHT_MODE">javascript</field>
+          <field name="TEXT">// Built-in variables: app, v3d, VARS, PROC&#10;app.scene.traverse(function(obj) {&#10;    var v = document.querySelector(".v3d-container")&#10;    var as = document.querySelectorAll(".v3d-container  a")&#10;    console.log(as)&#10;    for(var i=0; i&lt;as.length; i++){&#10;        //v.removeChild(divs[i])&#10;    }&#10;});</field>
+        </shadow>
+      </value>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="bloom" id="e=pD^RWjzjsS(BWQ9cjS" x="-1015" y="-434">
+      <value name="THRESHOLD">
+        <shadow type="number_slider" id="CEB{xj|@WZVe*mw%W.%/">
+          <field name="NUM" min="0" max="10" step="0.1">2</field>
+        </shadow>
+      </value>
+      <value name="STRENGTH">
+        <shadow type="number_slider" id="BQclu.b[l0AbJ#17J{9L">
+          <field name="NUM" min="0" max="10" step="0.1">0.2</field>
+        </shadow>
+      </value>
+      <value name="RADIUS">
+        <shadow type="number_slider" id="/KlhkC^%~k,Y/vOjWL-v">
+          <field name="NUM" min="0" max="10" step="0.1">0.5</field>
+        </shadow>
+      </value>
+      <next>
+        <block type="createEnvironment" id="k.x21DTK,q(s==8dRpmb">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" oncereadydoslot="false"></mutation>
+          <field name="TYPE">BACKGROUND_COLOR</field>
+          <value name="NAME">
+            <shadow type="text" id="s~hfh-#h00nCL(jl})QM">
+              <field name="TEXT">myEnvMaterial</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setMaterialColor" id="wq:=}*Nq.OBEalw0a[b]">
+              <mutation xmlns="http://www.w3.org/1999/xhtml" flexcolinput="false" usecsscolor="false"></mutation>
+              <field name="MAT_COL_NAME">Background Color</field>
+              <value name="MATERIAL">
+                <shadow type="materialList" id="KK1^9)6nw85Rv;q.=Ix5">
+                  <field name="FIELDNAME">myEnvMaterial</field>
+                </shadow>
+              </value>
+              <value name="R">
+                <shadow type="math_number" id="!.U^K?zq7mHOMV)sq?H,">
+                  <field name="NUM">1</field>
+                </shadow>
+              </value>
+              <value name="G">
+                <shadow type="math_number" id="SEqVGIwAY0![CoGO(`=.">
+                  <field name="NUM">0.5</field>
+                </shadow>
+              </value>
+              <value name="B">
+                <shadow type="math_number" id="xjpwN{;hJ1^IaSNOX3JD">
+                  <field name="NUM">0.5</field>
+                </shadow>
+              </value>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="animateParam" id="zNQ:T+tA7h+7}-?-2|Kv" x="-1050" y="-310">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="false"></mutation>
+      <field name="EASING">Linear</field>
+      <field name="EASING2">InOut</field>
+      <field name="YOYO">FALSE</field>
+      <value name="FROM">
+        <shadow type="math_number" id="xCQYh;/@p`-Ck+:zCKYl">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="TO">
+        <shadow type="math_number" id="Gz0IMFv*+574ca!eb4%H">
+          <field name="NUM">360</field>
+        </shadow>
+      </value>
+      <value name="DURATION">
+        <shadow type="math_number" id="shpB3P7}1k*6gFnkSOAy">
+          <field name="NUM">100</field>
+        </shadow>
+      </value>
+      <value name="REPEAT">
+        <shadow type="math_number" id="J-d8c(~V5w1_Z2Qy{5QL">
+          <field name="NUM">100000000</field>
+        </shadow>
+      </value>
+      <statement name="ON_UPDATE">
+        <block type="setObjTransform" id="^5?H%-VrWiN7l`q)TP|,">
+          <field name="MODE">rotation</field>
+          <field name="OFFSET">FALSE</field>
+          <value name="TARGETOBJ">
+            <shadow type="objectList" id="2wR~dTO0}K5d(G6}SA|9">
+              <field name="FIELDNAME">大气</field>
+            </shadow>
+          </value>
+          <value name="Z">
+            <block type="animateParamUpdate" id="?=/)TD)aJ968FAUAoB?d"/>
+          </value>
+        </block>
+      </statement>
+      <next>
+        <block type="animateParam" id="citahvO5|on:#Y[Z3(4N">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="false"></mutation>
+          <field name="EASING">Linear</field>
+          <field name="EASING2">InOut</field>
+          <field name="YOYO">FALSE</field>
+          <value name="FROM">
+            <shadow type="math_number" id="b/773km$z/CkbGF.1R2E">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="TO">
+            <shadow type="math_number" id="$`_H[7?^C@TARDLx[*~L">
+              <field name="NUM">-360</field>
+            </shadow>
+          </value>
+          <value name="DURATION">
+            <shadow type="math_number" id="M!U4wnRC7oM^fm4bLCFe">
+              <field name="NUM">300</field>
+            </shadow>
+          </value>
+          <value name="REPEAT">
+            <shadow type="math_number" id="cxtkJ87LEEdAt$*|sMpe">
+              <field name="NUM">100000000</field>
+            </shadow>
+          </value>
+          <statement name="ON_UPDATE">
+            <block type="setObjTransform" id="MSmGgS=@`,^hL{GB)2Sb">
+              <field name="MODE">rotation</field>
+              <field name="OFFSET">FALSE</field>
+              <value name="TARGETOBJ">
+                <shadow type="objectList" id="e^QRjk^C/%:;mP*LX`Gl">
+                  <field name="FIELDNAME">地球</field>
+                </shadow>
+              </value>
+              <value name="Z">
+                <block type="animateParamUpdate" id="oxgVdrB+syfnF]OaJyfD"/>
+              </value>
+            </block>
+          </statement>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="whenClicked" id="Q?;3UHZ~_?*ew/W:[_A4" inline="true" x="-1018" y="-67">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="true" enableifmissed="false"></mutation>
+      <field name="X_RAY">TRUE</field>
+      <field name="DOUBLE_CLICK">TRUE</field>
+      <field name="LEFT_BUTTON">TRUE</field>
+      <field name="MIDDLE_BUTTON">FALSE</field>
+      <field name="RIGHT_BUTTON">FALSE</field>
+      <value name="VALUE">
+        <shadow type="objectList" id="Geo(K/ximTvi|S9wEDsq">
+          <field name="FIELDNAME">地球</field>
+        </shadow>
+      </value>
+      <statement name="DO">
+        <block type="procedures_callnoreturn" id="Z8KB)o.kOH^PDbIm5p6G">
+          <mutation name="地球_click_and_tween_camera"/>
+        </block>
+      </statement>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id=":{HFK38Mtid+bol,oii]" x="-1050" y="90">
+      <field name="NAME">地球_click_and_tween_camera</field>
+      <comment pinned="false" h="80" w="160">Describe this function...</comment>
+      <statement name="STACK">
+        <block type="variables_set" id="W5/$O!)3lk{]3hd9,afG">
+          <field name="VAR" id="5;{4+P:`l7:d`z|,5I)x">e_地球_click</field>
+          <value name="VALUE">
+            <block type="raycast" id="4SIghy@P0K@L89e.5NM`">
+              <value name="FROM">
+                <block type="getActiveCamera" id="7[=5DSazlJ92_k9}~}oO"/>
+              </value>
+              <value name="DIRECTION">
+                <block type="getCameraDirection" id="99Hu!_`=wPMRAa#}pphA">
+                  <field name="MOUSE_TOUCH">TRUE</field>
+                  <field name="INVERTED">FALSE</field>
+                </block>
+              </value>
+              <value name="INTERSECT_OBJS">
+                <shadow type="objectList" id="DJLx9SjIzw2SSHg7.ch$">
+                  <field name="FIELDNAME">地球</field>
+                </shadow>
+              </value>
+            </block>
+          </value>
+          <next>
+            <block type="variables_set" id="!B_$Ld3fI+ow6cEJ=]_V">
+              <field name="VAR" id="|r_5M95!eka:F,FPe`AT">地球_point</field>
+              <value name="VALUE">
+                <block type="dictGet" id="c#z~wXoh*r7O+%`Y}~i^">
+                  <value name="DICT">
+                    <block type="lists_getIndex" id="hIDF^EY_q9[$p$2FKd+p">
+                      <mutation statement="false" at="true"/>
+                      <field name="MODE">GET</field>
+                      <field name="WHERE">FROM_START</field>
+                      <value name="VALUE">
+                        <block type="variables_get" id="|k55i74[2VL~P}hA3Y=K">
+                          <field name="VAR" id="5;{4+P:`l7:d`z|,5I)x">e_地球_click</field>
+                        </block>
+                      </value>
+                      <value name="AT">
+                        <block type="math_number" id="~;/gX_RA[GwV5q@l7t^I">
+                          <field name="NUM">0</field>
+                        </block>
+                      </value>
+                    </block>
+                  </value>
+                  <value name="KEY">
+                    <shadow type="text" id="BOUQns;xha0/h#i45g(!">
+                      <field name="TEXT">point</field>
+                    </shadow>
+                  </value>
+                </block>
+              </value>
+              <next>
+                <block type="variables_set" id=";n/)W.Kq_H9g?0=YYoCq">
+                  <field name="VAR" id="2q}$4./;7Wx*aPCge|Da">地球_point_vector</field>
+                  <value name="VALUE">
+                    <block type="createVector" id="lIV(jQ#dV_5lIL_=lc$)">
+                      <value name="X">
+                        <shadow type="math_number" id="`A?(KiGIUq;rN5t1}RS-">
+                          <field name="NUM">0</field>
+                        </shadow>
+                        <block type="lists_getIndex" id="lYvbo@Cd+SI4V/_8q;~U">
+                          <mutation statement="false" at="true"/>
+                          <field name="MODE">GET</field>
+                          <field name="WHERE">FROM_START</field>
+                          <value name="VALUE">
+                            <block type="variables_get" id="Q^e^*YAoLL|$L3*l!$1X">
+                              <field name="VAR" id="|r_5M95!eka:F,FPe`AT">地球_point</field>
+                            </block>
+                          </value>
+                          <value name="AT">
+                            <block type="math_number" id="M7*:FlMz:.OWuaIEo2og">
+                              <field name="NUM">0</field>
+                            </block>
+                          </value>
+                        </block>
+                      </value>
+                      <value name="Y">
+                        <shadow type="math_number" id="c{TxV$%IX(1]Sc[-ar|j">
+                          <field name="NUM">0</field>
+                        </shadow>
+                        <block type="lists_getIndex" id="0W(aFV$tX[IyNQoKc2Bp">
+                          <mutation statement="false" at="true"/>
+                          <field name="MODE">GET</field>
+                          <field name="WHERE">FROM_START</field>
+                          <value name="VALUE">
+                            <block type="variables_get" id="Q^=ek@2(yh-O:^r@wu;`">
+                              <field name="VAR" id="|r_5M95!eka:F,FPe`AT">地球_point</field>
+                            </block>
+                          </value>
+                          <value name="AT">
+                            <block type="math_number" id="-l!Izi]TEQbHV7@|`~M*">
+                              <field name="NUM">1</field>
+                            </block>
+                          </value>
+                        </block>
+                      </value>
+                      <value name="Z">
+                        <shadow type="math_number" id="36ZDZI+C:#o4.v(|rSzo">
+                          <field name="NUM">0</field>
+                        </shadow>
+                        <block type="lists_getIndex" id="YwoIoSxkp,LonSq:TD[.">
+                          <mutation statement="false" at="true"/>
+                          <field name="MODE">GET</field>
+                          <field name="WHERE">FROM_START</field>
+                          <value name="VALUE">
+                            <block type="variables_get" id="#R9M]Mg1n-}?2fqn0I;8">
+                              <field name="VAR" id="|r_5M95!eka:F,FPe`AT">地球_point</field>
+                            </block>
+                          </value>
+                          <value name="AT">
+                            <block type="math_number" id="bp+0R.IQ_upXIOwzOj7?">
+                              <field name="NUM">2</field>
+                            </block>
+                          </value>
+                        </block>
+                      </value>
+                    </block>
+                  </value>
+                  <next>
+                    <block type="tweenCameraExt" id="}LJVkGblpAssak$+|K{f">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="false"></mutation>
+                      <field name="MOVEMENT_TYPE">SPHERICAL</field>
+                      <value name="POSITION">
+                        <block type="vectorMath" id="%7A}~pwF,JO@zrjVXQ9l">
+                          <field name="VALUE_NAME">ADD</field>
+                          <value name="VECTOR">
+                            <block type="getVectorValue" id="M3!nfH:|1GQ)E4rnOY-J">
+                              <field name="VALUE_NAME">NORMALIZED</field>
+                              <value name="VECTOR">
+                                <block type="variables_get" id="{3fTK)Z/|~l{rcN`T|^.">
+                                  <field name="VAR" id="2q}$4./;7Wx*aPCge|Da">地球_point_vector</field>
+                                </block>
+                              </value>
+                            </block>
+                          </value>
+                          <value name="VECTOR2">
+                            <block type="variables_get" id="T6Tr=hBh;G1^0@M7Cfw0">
+                              <field name="VAR" id="2q}$4./;7Wx*aPCge|Da">地球_point_vector</field>
+                            </block>
+                          </value>
+                        </block>
+                      </value>
+                      <value name="LOOKAT">
+                        <block type="objectList" id="QMxYml=JSWThloVt{[~p">
+                          <field name="FIELDNAME">地球</field>
+                        </block>
+                      </value>
+                      <value name="DURATION">
+                        <shadow type="math_number" id="b#C{FESb{wWGWd].B)qZ">
+                          <field name="NUM">1.5</field>
+                        </shadow>
+                      </value>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </tab>
+  <editorsettings viewport-x="900.3999877929687" viewport-y="48.79998779296875" viewport-w="426.4" viewport-h="434.6" viewport-hidden="false" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>

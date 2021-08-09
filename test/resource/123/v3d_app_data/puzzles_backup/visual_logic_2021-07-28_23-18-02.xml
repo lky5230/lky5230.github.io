@@ -1,0 +1,215 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="init" type="InitTab" active="false" scrollx="683" scrolly="323.00000000000006" scale="0.9">
+    <block xmlns="https://developers.google.com/blockly/xml" type="initSettings" id="o+euYzDp|vv][|%4`G^Y" x="-670" y="-210">
+      <field name="LOAD_COMP_ASSETS">TRUE</field>
+      <field name="FULLSCREEN">FALSE</field>
+      <field name="BKG_TRANSPARENCY">TRUE</field>
+      <field name="PRESERVE_DRAW_BUF">FALSE</field>
+      <field name="FADE_ANNOTATIONS">FALSE</field>
+    </block>
+  </tab>
+  <tab name="main" type="MainTab" active="true" scrollx="1063.3773508754962" scrolly="432.8781896013685" scale="0.8851701341936815">
+    <block xmlns="https://developers.google.com/blockly/xml" type="bloom" id="e=pD^RWjzjsS(BWQ9cjS" x="-810" y="-410">
+      <value name="THRESHOLD">
+        <shadow type="number_slider" id="CEB{xj|@WZVe*mw%W.%/">
+          <field name="NUM" min="0" max="10" step="0.1">0.8</field>
+        </shadow>
+      </value>
+      <value name="STRENGTH">
+        <shadow type="number_slider" id="BQclu.b[l0AbJ#17J{9L">
+          <field name="NUM" min="0" max="10" step="0.1">0.3</field>
+        </shadow>
+      </value>
+      <value name="RADIUS">
+        <shadow type="number_slider" id="/KlhkC^%~k,Y/vOjWL-v">
+          <field name="NUM" min="0" max="10" step="0.1">0.5</field>
+        </shadow>
+      </value>
+      <next>
+        <block type="createEnvironment" id="HDim)C9;#GaU(1#Z5~e(">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" oncereadydoslot="false"></mutation>
+          <field name="TYPE">BACKGROUND_COLOR</field>
+          <value name="NAME">
+            <shadow type="text" id=",n/sPXQJ7*ibNbV/@,pb">
+              <field name="TEXT">myEnvMaterial</field>
+            </shadow>
+          </value>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="tweenCameraExt" id="K7/B6)JT6#@}@y)y+}Rw" x="-810" y="-290">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="false"></mutation>
+      <field name="MOVEMENT_TYPE">LINEAR</field>
+      <value name="POSITION">
+        <block type="createVector" id="Yj0q;9Dm/FcAhvTM1[Au">
+          <value name="X">
+            <shadow type="math_number" id="]@/pNQ%S67ulr/Mm1$I)">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+          <value name="Y">
+            <shadow type="math_number" id="qQOwWTP+vd1UI,~hcBOC">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+          <value name="Z">
+            <shadow type="math_number" id=",2Ytd%8g/Z348}:10XlJ">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+      <value name="LOOKAT">
+        <block type="objectList" id=";a6d}a5%ttQ1~5x^T8O^">
+          <field name="FIELDNAME">地球</field>
+        </block>
+      </value>
+      <value name="DURATION">
+        <shadow type="math_number" id="58^S$AI+[EFbpi:I[a6m">
+          <field name="NUM">3</field>
+        </shadow>
+      </value>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="animateParam" id="grC5{,^P-CKecC/_WXTQ" x="-810" y="-210">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="false"></mutation>
+      <field name="EASING">Linear</field>
+      <field name="EASING2">InOut</field>
+      <field name="YOYO">FALSE</field>
+      <value name="FROM">
+        <shadow type="math_number" id="E-;Dedb|kGKJ/LrdhDSq">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="TO">
+        <shadow type="math_number" id="M8,~9ybNHbwq`o;f7(M7">
+          <field name="NUM">22</field>
+        </shadow>
+      </value>
+      <value name="DURATION">
+        <shadow type="math_number" id=":84=|^e{R0?m^.^sd$jc">
+          <field name="NUM">0.4</field>
+        </shadow>
+      </value>
+      <value name="REPEAT">
+        <shadow type="math_number" id="E+_fRrwmPj7!NLoqT%82">
+          <field name="NUM">2222222</field>
+        </shadow>
+      </value>
+      <statement name="ON_UPDATE">
+        <block type="setMaterialValue" id="R=YvmD_.zJX^H-iuK$z8">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" flexvalinput="false"></mutation>
+          <field name="MAT_VAL_NAME">red_value</field>
+          <value name="MATERIAL">
+            <shadow type="materialList" id="xL7w/`OR%}d%)8Z*B.r~">
+              <field name="FIELDNAME">dot-mat</field>
+            </shadow>
+          </value>
+          <value name="VALUE">
+            <shadow type="math_number" id="KKgu!jW~~L?/z`B02`4S">
+              <field name="NUM">0.5</field>
+            </shadow>
+            <block type="animateParamUpdate" id="icUHC)Uew%dp%umio`65"/>
+          </value>
+        </block>
+      </statement>
+      <next>
+        <block type="animateParam" id="zNQ:T+tA7h+7}-?-2|Kv">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="false"></mutation>
+          <field name="EASING">Linear</field>
+          <field name="EASING2">InOut</field>
+          <field name="YOYO">FALSE</field>
+          <value name="FROM">
+            <shadow type="math_number" id="xCQYh;/@p`-Ck+:zCKYl">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="TO">
+            <shadow type="math_number" id="Gz0IMFv*+574ca!eb4%H">
+              <field name="NUM">360</field>
+            </shadow>
+          </value>
+          <value name="DURATION">
+            <shadow type="math_number" id="shpB3P7}1k*6gFnkSOAy">
+              <field name="NUM">100</field>
+            </shadow>
+          </value>
+          <value name="REPEAT">
+            <shadow type="math_number" id="J-d8c(~V5w1_Z2Qy{5QL">
+              <field name="NUM">2222222</field>
+            </shadow>
+          </value>
+          <statement name="ON_UPDATE">
+            <block type="setObjTransform" id="^5?H%-VrWiN7l`q)TP|,">
+              <field name="MODE">rotation</field>
+              <field name="OFFSET">FALSE</field>
+              <value name="TARGETOBJ">
+                <shadow type="objectList" id="2wR~dTO0}K5d(G6}SA|9">
+                  <field name="FIELDNAME">大气</field>
+                </shadow>
+              </value>
+              <value name="Z">
+                <block type="animateParamUpdate" id="?=/)TD)aJ968FAUAoB?d"/>
+              </value>
+            </block>
+          </statement>
+          <next>
+            <block type="animateParam" id="4SsY!n0(h.Z-BrqU$O?d">
+              <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="false"></mutation>
+              <field name="EASING">Linear</field>
+              <field name="EASING2">InOut</field>
+              <field name="YOYO">FALSE</field>
+              <value name="FROM">
+                <shadow type="math_number" id="AH?~PrFj8KPMZZBQ[bqg">
+                  <field name="NUM">0</field>
+                </shadow>
+              </value>
+              <value name="TO">
+                <shadow type="math_number" id="8t%irV%CC`RET~JniA;Q">
+                  <field name="NUM">360</field>
+                </shadow>
+              </value>
+              <value name="DURATION">
+                <shadow type="math_number" id="I1).4t[8]Era`TQ?]*s1">
+                  <field name="NUM">1200</field>
+                </shadow>
+              </value>
+              <value name="REPEAT">
+                <shadow type="math_number" id="8~r%%gW~MpeIDTGe.G$#">
+                  <field name="NUM">2222222</field>
+                </shadow>
+              </value>
+              <statement name="ON_UPDATE">
+                <block type="setObjTransform" id="OBHMryvJ^a^%[!f$nPDG">
+                  <field name="MODE">rotation</field>
+                  <field name="OFFSET">FALSE</field>
+                  <value name="TARGETOBJ">
+                    <shadow type="objectList" id="E|2/sK+A$s]Iie~|K!m1">
+                      <field name="FIELDNAME">地球</field>
+                    </shadow>
+                  </value>
+                  <value name="Z">
+                    <block type="math_arithmetic" id="~D-B=)R3_!xFf5r59am1">
+                      <field name="OP">ADD</field>
+                      <value name="A">
+                        <shadow type="math_number" id="gIvXX^Nk4cPK97`Xbs46">
+                          <field name="NUM">150</field>
+                        </shadow>
+                      </value>
+                      <value name="B">
+                        <shadow type="math_number" id="T}kW5!ISjdBTgUb@ELtB">
+                          <field name="NUM">2</field>
+                        </shadow>
+                        <block type="animateParamUpdate" id="C?$+XmV2j~$T?[tD5v}e"/>
+                      </value>
+                    </block>
+                  </value>
+                </block>
+              </statement>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1091.6" viewport-y="28" viewport-w="426.4" viewport-h="434.6" viewport-hidden="true" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>
